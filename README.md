@@ -66,3 +66,25 @@ The Solana program receives the "Success" signal and triggers the loan disbursem
 * **Cross-chain Private Credit**: Bringing credit scores from other chains into the Arcium enclave.
 
 ---
+
+🧪 How to Test the MPC Logic
+To ensure the confidential computation and mathematical logic are functioning correctly, you can run the built-in test suite. These tests simulate the Arcium environment locally.
+
+1. Running the Tests
+Open your terminal in the project directory and execute:
+
+```Bash
+cargo test -- --nocapture
+```
+
+The --nocapture flag allows you to see the printed output of the secret calculations.
+
+2. What is being tested?PrivaLend: The test verifies the Confidential Borrowing Power formula ($Collateral + Credit Score \times 20$) to ensure the weighted lending logic is intact.Private Voting: The test simulates an Encrypted Tally, verifying that adding a weighted vote ($Choice \times Weight$) to the current total produces the correct result without data corruption.
+
+3. Expected Output
+You should see a message indicating the tests passed:
+
+```Bash
+test tests::test_confidential_logic ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored;
+```
